@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ActorCard(props) {
+function ActorCard({actor}) {
     return (
         <div>
-            ActorCard
+            ActorCard {actor}
         </div>
     );
 }
