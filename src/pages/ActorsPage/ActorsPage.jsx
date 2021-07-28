@@ -39,7 +39,13 @@ function ActorsPage(props) {
                     onSearchChange={searchChange}
                     results={results.map(result => result.name)}
                     onResultSelected={addActor}/>
-                {actors.map((actor, index) => <ActorCard key={index} actor={actor}/>)}
+                <div className="row">
+                    {actors.map((actor, index) => 
+                        <div key={index} className="col-md-6 col-lg-3">
+                            <ActorCard actor={actor}/>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
