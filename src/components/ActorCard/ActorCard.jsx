@@ -3,7 +3,7 @@ import React from 'react';
 function ActorCard({actor}) {
     return (
         <div>
-            ActorCard {actor}
+            ActorCard {actor.name}
         </div>
     );
 }

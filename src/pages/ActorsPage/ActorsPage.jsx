@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ActorCard from '../../components/ActorCard/ActorCard';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import ActorModel from '../../model/ActorModel';
 import './ActorsPage.css'
 
 function ActorsPage(props) {
@@ -15,7 +16,7 @@ function ActorsPage(props) {
 
         if (newSearchText) {
             // Dummy results (this will be taken from TMDB)
-            setResults(["Brad Pitt", "Angelina Jolie", "Marlon Brandon"]);
+            setResults([new ActorModel("Brad Pitt"), new ActorModel("Angelina Jolie"), new ActorModel("Marlon Brandon")]);
         } else {
             setResults([]);
         }
@@ -36,7 +37,7 @@ function ActorsPage(props) {
                 <SearchBox placeholder="Search actors..."
                     searchText={serachText}
                     onSearchChange={searchChange}
-                    results={results}
+                    results={results.map(result => result.name)}
                     onResultSelected={addActor}/>
                 {actors.map((actor, index) => <ActorCard key={index} actor={actor}/>)}
             </div>
