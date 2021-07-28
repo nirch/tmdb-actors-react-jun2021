@@ -15,8 +15,11 @@ function ActorsPage(props) {
         setSearchText(newSearchText);
 
         if (newSearchText) {
-            // Dummy results (this will be taken from TMDB)
-            setResults([new ActorModel("Brad Pitt"), new ActorModel("Angelina Jolie"), new ActorModel("Marlon Brandon")]);
+            const searchURL = `https://api.themoviedb.org/3/search/person?api_key=53d2ee2137cf3228aefae083c8158855&query=${newSearchText}`;
+            fetch(searchURL).then(response => response.json()).then(data => {
+                console.log(data);
+                setResults(data.results.map(tmdbActor => new ActorModel(tmdbActor.name, tmdbActor.profile_path)));
+            });
         } else {
             setResults([]);
         }
